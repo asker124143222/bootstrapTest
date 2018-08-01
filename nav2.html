@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <!--<script src="jquery/jquery.min.js"></script>-->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <title>导航页2</title>
+
+    <style>
+        /*body { padding-top: 70px; }*/
+        .border2{
+            border: 1px solid #9acfea;
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img  alt="Brand" src="image/arrow_right.png" width="20" height="20">
+            </a>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" id="mytab">
+                <li class="active"><a href="#">Link <span class="badge">15</span> <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" >
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right" id="mytab2">
+                <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+                <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Marko</a></p>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Example page header <small>Subtext for header</small></h1>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Hello, world!</h1>
+        <p>如果需要让巨幕组件的宽度与浏览器宽度一致并且没有圆角，请把此组件放在所有 .container 元素的外面，并在组件内部添加一个 .container 元素。</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+            <span class="sr-only">60% Complete</span>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="bs-example" data-example-id="table-within-panel">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+
+            <!-- Table -->
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">列表组中的每个元素都可以是任何 HTML 内容，甚至是像下面的带链接的列表组。</p>
+                </li>
+                <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+                <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+                <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-success">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">列表组中的每个元素都可以是任何 HTML 内容，甚至是像下面的带链接的列表组。</p>
+                </a>
+                <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
+                <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <ul class="media-list border2">
+        <li class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="image/1.png" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                <p>新增公会排名系统.
+
+                    公会界面 > 新增了查看公会排名的按钮.
+
+                    依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                    获得排名的公会，全体成员都可以获得奖励.
+
+                    - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                    - 1～3名公会 - 队伍边框、排行展示榜
+
+                    - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                    新增公会成员排名系统.</p>
+
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="image/1.png" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        <p>新增公会排名系统.
+
+                            公会界面 > 新增了查看公会排名的按钮.
+
+                            依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                            获得排名的公会，全体成员都可以获得奖励.
+
+                            - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                            - 1～3名公会 - 队伍边框、排行展示榜
+
+                            - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                            新增公会成员排名系统.
+
+                            公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                            新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                            萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                            萌芽公会成员在公会频道聊天时会有专属特效.
+
+                            与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="image/1.png" alt="...">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4>
+                                <p>新增公会排名系统.
+
+                                    公会界面 > 新增了查看公会排名的按钮.
+
+                                    依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                                    获得排名的公会，全体成员都可以获得奖励.
+
+                                    - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                                    - 1～3名公会 - 队伍边框、排行展示榜
+
+                                    - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                                    新增公会成员排名系统.
+
+                                    公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                                    新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                                    萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                                    萌芽公会成员在公会频道聊天时会有专属特效.
+
+                                    与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="image/2.png" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        <p>新增公会排名系统.
+
+                            公会界面 > 新增了查看公会排名的按钮.
+
+                            依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                            获得排名的公会，全体成员都可以获得奖励.
+
+                            - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                            - 1～3名公会 - 队伍边框、排行展示榜
+
+                            - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                            新增公会成员排名系统.
+
+                            公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                            新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                            萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                            萌芽公会成员在公会频道聊天时会有专属特效.
+
+                            与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+        <li class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="image/1.png" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                <p>新增公会排名系统.
+
+                    公会界面 > 新增了查看公会排名的按钮.
+
+                    依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                    获得排名的公会，全体成员都可以获得奖励.
+
+                    - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                    - 1～3名公会 - 队伍边框、排行展示榜
+
+                    - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                    新增公会成员排名系统.</p>
+
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="image/1.png" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        <p>新增公会排名系统.
+
+                            公会界面 > 新增了查看公会排名的按钮.
+
+                            依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                            获得排名的公会，全体成员都可以获得奖励.
+
+                            - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                            - 1～3名公会 - 队伍边框、排行展示榜
+
+                            - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                            新增公会成员排名系统.
+
+                            公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                            新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                            萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                            萌芽公会成员在公会频道聊天时会有专属特效.
+
+                            与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="image/1.png" alt="...">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Media heading</h4>
+                                <p>新增公会排名系统.
+
+                                    公会界面 > 新增了查看公会排名的按钮.
+
+                                    依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                                    获得排名的公会，全体成员都可以获得奖励.
+
+                                    - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                                    - 1～3名公会 - 队伍边框、排行展示榜
+
+                                    - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                                    新增公会成员排名系统.
+
+                                    公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                                    新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                                    萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                                    萌芽公会成员在公会频道聊天时会有专属特效.
+
+                                    与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="image/2.png" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Media heading</h4>
+                        <p>新增公会排名系统.
+
+                            公会界面 > 新增了查看公会排名的按钮.
+
+                            依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                            获得排名的公会，全体成员都可以获得奖励.
+
+                            - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                            - 1～3名公会 - 队伍边框、排行展示榜
+
+                            - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                            新增公会成员排名系统.
+
+                            公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                            新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                            萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                            萌芽公会成员在公会频道聊天时会有专属特效.
+
+                            与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>
+
+
+<div class="container">
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="image/1.png" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            <p>新增公会排名系统.
+
+                公会界面 > 新增了查看公会排名的按钮.
+
+                依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                获得排名的公会，全体成员都可以获得奖励.
+
+                - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                - 1～3名公会 - 队伍边框、排行展示榜
+
+                - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                新增公会成员排名系统.
+
+                公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                萌芽公会成员在公会频道聊天时会有专属特效.
+
+                与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="image/2.png" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Media heading</h4>
+                    <p>新增公会排名系统.
+
+                        公会界面 > 新增了查看公会排名的按钮.
+
+                        依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                        获得排名的公会，全体成员都可以获得奖励.
+
+                        - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                        - 1～3名公会 - 队伍边框、排行展示榜
+
+                        - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                        新增公会成员排名系统.
+
+                        公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                        新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                        萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                        萌芽公会成员在公会频道聊天时会有专属特效.
+
+                        与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="image/2.png" alt="...">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>
+                            <p>新增公会排名系统.
+
+                                公会界面 > 新增了查看公会排名的按钮.
+
+                                依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                                获得排名的公会，全体成员都可以获得奖励.
+
+                                - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                                - 1～3名公会 - 队伍边框、排行展示榜
+
+                                - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                                新增公会成员排名系统.
+
+                                公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                                新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                                萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                                萌芽公会成员在公会频道聊天时会有专属特效.
+
+                                与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="image/2.png" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Media heading</h4>
+                    <p>新增公会排名系统.
+
+                        公会界面 > 新增了查看公会排名的按钮.
+
+                        依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                        获得排名的公会，全体成员都可以获得奖励.
+
+                        - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                        - 1～3名公会 - 队伍边框、排行展示榜
+
+                        - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                        新增公会成员排名系统.
+
+                        公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                        新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                        萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                        萌芽公会成员在公会频道聊天时会有专属特效.
+
+                        与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="image/2.png" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            <p>新增公会排名系统.
+
+                公会界面 > 新增了查看公会排名的按钮.
+
+                依据每月第1天～每月最后1天期间公会所有活动计算进行排名.
+
+                获得排名的公会，全体成员都可以获得奖励.
+
+                - 最顶级公会 - 在公会标记上新增特效，在公会基地入口处新增标牌
+
+                - 1～3名公会 - 队伍边框、排行展示榜
+
+                - 新增公会月度排行榜，可以查看整个服务器的公会排名.
+
+                新增公会成员排名系统.
+
+                公会贡献度高的成员，在公会列表以及公会频道聊天时会有专属特效.
+
+                新手/回归冒险家加入公会时，会获得萌芽公会成员等级.
+
+                萌芽公会成员等级持续时间与[赛丽亚的欢迎]持续时间相同.
+
+                萌芽公会成员在公会频道聊天时会有专属特效.
+
+                与萌芽公会成员一起进行游戏，可以获得公会排名点数.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <nav aria-label="Page navigation" class="text-right">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>跳至<input type="text" class="g-input">页<input type="button" onclick="" value="GO"></input></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+        <nav aria-label="...">
+            <ul class="pager">
+                <li><a href="#">Previous</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </nav>
+
+        <nav aria-label="...">
+            <ul class="pager">
+                <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+                <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+        </nav>
+
+        <nav aria-label="...">
+            <ul class="pager">
+                <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+                <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+        </nav>
+    </nav>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+                <img src="image/1.png">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>添加一点点额外的标签，就可以把任何类型的 HTML 内容，例如标题、段落或按钮，加入缩略图组件内</p>
+                    <p class="text-center ">
+                        <a href="#" class="btn btn-primary " style="width: 45%" role="button">Button</a>
+                        <a href="#" class="btn btn-default " style="width: 45%" role="button">Button</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+                <img src="image/2.png">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>添加一点点额外的标签，就可以把任何类型的 HTML 内容，例如标题、段落或按钮，加入缩略图组件内</p>
+                    <p>
+                        <a href="#" class="btn btn-primary" role="button">Button</a>
+                        <a href="#" class="btn btn-default" role="button">Button</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+                <img src="image/3.png">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>添加一点点额外的标签，就可以把任何类型的 HTML 内容，例如标题、段落或按钮，加入缩略图组件内</p>
+                    <p>
+                        <a href="#" class="btn btn-primary" role="button">Button</a>
+                        <a href="#" class="btn btn-default" role="button">Button</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+                <img src="image/1.png">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>添加一点点额外的标签，就可以把任何类型的 HTML 内容，例如标题、段落或按钮，加入缩略图组件内</p>
+                    <p>
+                        <a href="#" class="btn btn-primary" role="button">Button</a>
+                        <a href="#" class="btn btn-default" role="button">Button</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
+
+</div>
+
+<div class="container">
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+    </ul>
+
+    <span class="label label-default">Default</span>
+    <span class="label label-primary">Primary</span>
+    <span class="label label-success">Success</span>
+    <span class="label label-info">Info</span>
+    <span class="label label-warning">Warning</span>
+    <span class="label label-danger">Danger</span>
+
+    <h3>Example heading <span class="label label-default">New</span></h3>
+
+    <a href="#">Inbox <span class="badge">42</span></a>
+
+    <button class="btn btn-primary" type="button">
+        Messages <span class="badge">4</span>
+    </button>
+
+</div>
+
+
+
+<script>
+
+
+    $("#mytab li").click(function (e) {
+        e.preventDefault();
+        $(this).tab("show");
+        console.log("show");
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      layout:decorator="index"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrapValidator.min.css">
+
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="bootstrap/js/bootstrapValidator.min.js"></script>
+    <title>新增</title>
+    <style>
+        .bgColor{
+            background-color:rgba(243,66,111,0.15)
+        }
+        .divBorder{
+            border: solid 1px rgba(12,24,255,0.15);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        .h4font{
+            margin-top: 0px;
+            font-family: 微软雅黑;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="">
+<br/>
+
+<!--<div layout:fragment="content">-->
+<div class="container" layout:fragment="content">
+    <form class="form-horizontal" id="formAdd" action="#" th:action="@{/customer/add}" method="post">
+
+        <div class="divBorder">
+            <h4 class="panel panel-heading h4font">
+                <a class="btn btn-primary" data-toggle="collapse"
+                   data-target="#customerPanel">客户信息
+                </a>
+                <span th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')}"></span>
+            </h4>
+
+            <div class="panel-body collapse in" id="customerPanel">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">档案号</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" name="filesNo" placeholder="档案号" th:value="${customer.filesNo}">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">姓名</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="customerName" placeholder="姓名" th:value="${customer.customerName}">
+                    </div>
+                    <label class="col-sm-1 control-label">入住房号</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="inRoomNum" placeholder="入住房号" th:value="${customer.inRoomNum}">
+                        <span class="help-block" style="color: red" th:if="${#fields.hasErrors('${customer.inRoomNum}')}" th:errors="${customer.inRoomNum}"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label  class="col-sm-1 control-label">入住协议</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="agreementNum" placeholder="入住协议" th:value="${customer.agreementNum}">
+                    </div>
+                    <label class="col-sm-1 control-label">签单金额</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control"  name="agreementMoney" placeholder="0.00" th:value="${customer.agreementMoney}">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">籍贯</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="nativePlace" placeholder="籍贯" th:value="${customer.nativePlace}">
+                    </div>
+                    <label class="col-sm-1 control-label">国籍</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="cNation" placeholder="国籍" value="中国">
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">房型</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="roomType" placeholder="房型" th:value="${customer.roomType}">
+                    </div>
+
+                    <label class="col-sm-1 control-label">入住天数</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="agreementInDays" placeholder="协议入住天数" value="30" th:value="${customer.agreementInDays}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">入室时间</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="inDate" placeholder="入室时间" th:value="${#temporals.format(#temporals.createNow(),'yyyy-MM-dd HH:mm')}">
+                    </div>
+
+                    <label class="col-sm-1 control-label">离室时间</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="outDate" placeholder="离室时间" th:value="${#temporals.format(customer.outDate,'yyyy-MM-dd HH:mm')}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">实住天数</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="actualInDays" placeholder="实住天数" th:value="${customer.actualInDays}">
+                    </div>
+
+                    <label class="col-sm-1 control-label">手机号</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="PhoneNum" placeholder="手机号" th:value="${customer.actualInDays}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">电子邮箱</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="email" placeholder="电子邮箱" th:value="${customer.email}">
+                    </div>
+
+                    <label class="col-sm-1 control-label">微信</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="qqNum" placeholder="微信" th:value="${customer.qqNum}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">生日</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="birthday" placeholder="生日" th:value="${#temporals.format(customer.birthday,'yyyy-MM-dd')}">
+                    </div>
+
+                    <label class="col-sm-1 control-label">身份证</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="idCard" placeholder="身份证" th:value="${customer.idCard}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">证件地址</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" name="idCardAddr" placeholder="证件地址" th:value="${customer.idCardAddr}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">住址</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" name="addr" placeholder="住址" th:value="${customer.addr}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">工作单位</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="workUnit" placeholder="工作单位" th:value="${customer.workUnit}">
+                    </div>
+
+                    <label class="col-sm-1 control-label">职业</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="profession" placeholder="职业" th:value="${customer.profession}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">民族</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="nation" placeholder="民族" th:value="${customer.nation}">
+                    </div>
+
+                    <label class="col-sm-1 control-label">宗教</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="religion" placeholder="宗教" th:value="${customer.religion}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">文化程度</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="education" placeholder="文化程度" th:value="${customer.education}">
+                    </div>
+
+                    <label class="col-sm-1 control-label">婚姻状况</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="marriage" placeholder="婚姻状况" th:value="${customer.marriage}">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="divBorder">
+            <h4 class="panel panel-heading h4font">
+                <a class="btn btn-primary " data-toggle="collapse"
+                   data-target="#babyPanel">宝宝信息
+                </a>
+            </h4>
+
+            <div class="panel-body collapse" id="babyPanel">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">宝宝姓名</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="babyName" placeholder="宝宝姓名">
+                    </div>
+                    <label class="col-sm-1 control-label">乳名</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="babyBornName" placeholder="乳名">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">宝宝性别</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="sex" placeholder="宝宝性别">
+                    </div>
+                    <label class="col-sm-1 control-label">血型</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="babyBloodType" placeholder="血型">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">宝宝生日</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="babyBithday" placeholder="宝宝生日">
+                    </div>
+                    <label class="col-sm-1 control-label">出生时间</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="bornTime" placeholder="出生时间">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">出生体重</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="bornWeight" placeholder="出生体重g">
+                    </div>
+                    <label class="col-sm-1 control-label">出生身高</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="bornHeight" placeholder="出生身高cm">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">入室体重</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="inRoomWeight" placeholder="入室体重">
+                    </div>
+                    <label class="col-sm-1 control-label">离室体重</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="outRoomWeight" placeholder="离室体重">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">饮食情况</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="eatStatus" placeholder="饮食情况">
+                    </div>
+                    <label class="col-sm-1 control-label">入室情况</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="inRoomStatus" placeholder="入室情况">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="divBorder">
+            <h4 class="panel panel-heading h4font">
+                <a class="btn btn-primary " data-toggle="collapse"
+                        data-target="#extraPanel">附加信息
+                </a>
+            </h4>
+
+            <div class="panel-body collapse" id="extraPanel">
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">家属姓名</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation1" placeholder="家属姓名">
+                    </div>
+                    <label class="col-sm-1 control-label">家属关系</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation1Be" placeholder="家属关系">
+                    </div>
+                    <label class="col-sm-1 control-label">联系电话</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation1Phone" placeholder="联系电话">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">家属姓名</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation2" placeholder="家属姓名">
+                    </div>
+                    <label class="col-sm-1 control-label">家属关系</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation2Be" placeholder="家属关系">
+                    </div>
+                    <label class="col-sm-1 control-label">联系电话</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation2Phone" placeholder="联系电话">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">家属姓名</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation3" placeholder="家属姓名">
+                    </div>
+                    <label class="col-sm-1 control-label">家属关系</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation3Be" placeholder="家属关系">
+                    </div>
+                    <label class="col-sm-1 control-label">联系电话</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="relation3Phone" placeholder="联系电话">
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <br/>
+        <div class="form-group">
+            <div class="col-sm-1">
+                <button type="submit" class="btn btn-primary">保 存</button>
+            </div>
+
+            <div class="col-sm-1">
+                <a href="/customer/list" th:href="@{/customer/list}" class="btn btn-primary">返 回</a>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var orignWidth; //= $("input[type='text']").outerWidth()+'px';
+//        console.log(orignWidth);
+        var orignHeight; // = $("input[type='text']").outerHeight()+'px';
+//        console.log(orignHeight);
+
+
+        $("input[type='text']").focus(function(){
+            orignWidth = $(this).outerWidth()+'px';
+            orignHeight = $(this).outerHeight()+'px';
+            $(this).animate({"width":orignWidth,"height":"60px"})
+        }).blur(function(){
+            $(this).animate({"width":orignWidth,"height":orignHeight})
+        });
+
+        $('#formAdd').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields:{
+                customerName: {/*键名username和input name值对应*/
+                    message: 'The customer is not valid',
+                    validators: {
+                        notEmpty: {/*非空提示*/
+                            message: '用户名不能为空'
+                        },
+                        stringLength: {/*长度提示*/
+                            min: 6,
+                            max: 30,
+                            message: '用户名长度必须在6到30之间'
+                        }
+//                        ,
+//                        callback: {/*自定义，可以在这里与其他输入项联动校验*/
+//                            message: '只能是wm5920',
+//                            callback:function(value, validator,$field){
+//                                return value==='wm5920';
+//                            }
+//                        }
+                    }
+                },
+
+                agreementMoney:{
+                   message:'无效的输入',
+                    validators:{
+                       notEmpty:{
+                           message:'金额不能为空'
+                       },
+                        regexp: {
+                            regexp: /^(([1-9]+)|([0-9]+\.[0-9]{1,2}))$/,
+                            message: '必须是金额,例如：2000.12。'
+                        }
+
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
