@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrapValidator.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-select.css">
 
-    <script src="bootstrap/js/bootstrap-select.js"></script>
-    <script src="bootstrap/js/i18n/defaults-zh_CN.js"></script>
+
 
 
     <title>新增用户</title>
@@ -32,6 +31,13 @@
             margin-top: 0px;
             font-family: 微软雅黑;
             font-weight: 600;
+        }
+        .special {
+            border: solid 1px rgba(12,24,255,0.15);
+            padding: 1px;
+            margin-top: 1px;
+            border-radius: 5px;
+            font-weight: bold;
         }
     </style>
 
@@ -82,53 +88,60 @@
 
                     <div class="col-sm-6">
                         <label class="radio-inline">
-                            <input type="radio"  value="1" name="userStat" checked>正常
+                            <input type="radio"  value="0" name="state" checked>未认证
+                        </label>
+
+                        <label class="radio-inline">
+                            <input type="radio"  value="1" name="state" >正常
                         </label>
                         <label class="radio-inline">
-                            <input type="radio"  value="0" name="userStat">禁用
+                            <input type="radio"  value="2" name="state">禁用
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-1 control-label">角色</label>
-
-                    <select class="form-control selectpicker" title="请选择省份" multiple>
-                        <option data-content="<span class='label label-success'>广东省</span>">广东省</option>
-                        <option data-content="<span class='label label-info'>广西省</span>">广西省</option>
-                        <option data-content="<span class='label label-warning'>福建省</span>">福建省</option>
-                        <option data-content="<span class='label label-danger'>山东省</span>">山东省</option>
-                    </select>
-                    <div class="col-sm-8">
-
-
+                    <div class="col-sm-4">
+                        <select class="form-control selectpicker" title="请选择角色" multiple data-selected-text-format="count > 3">
+                            <option disabled value="1" class="special">admin</option>
+                            <option value="2" class="special">power user</option>
+                            <option value="3" class="special" selected>user</option>
+                            <option value="4" class="special">guest</option>
+                        </select>
                     </div>
-
-
                 </div>
 
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">有效期</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="userName" placeholder="有效期" th:value="${user.expiredDate}">
+                    </div>
+                    <label class="control-label">（置空表示永不过期）</label>
+                </div>
 
-
-
-
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">邮箱</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="userName" placeholder="电子邮箱" th:value="${user.email}">
+                    </div>
+                    <label class="control-label">（格式：xxx@xxx.com）</label>
+                </div>
             </div>
-
-
         </div>
 
-
-
-        <br/>
+        <br>
         <div class="form-group">
-            <div class="col-sm-1">
+            <div class="col-sm-offset-5 col-sm-1">
                 <button type="submit" class="btn btn-primary">保 存</button>
             </div>
 
             <div class="col-sm-1">
                 <a href="/customer/list" th:href="@{/customer/list}" class="btn btn-primary">返 回</a>
             </div>
-
         </div>
+
+
 
     </form>
 
@@ -138,6 +151,8 @@
 <script src="jquery/jquery-3.3.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
 <script src="bootstrap/js/bootstrapValidator.min.js"></script>
+<script src="bootstrap/js/bootstrap-select.js"></script>
+<script src="bootstrap/js/i18n/defaults-zh_CN.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
