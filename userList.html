@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="~{index}"
+      xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrapValidator.min.css" th:href="@{/css/bootstrapValidator.min.css}">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.css" th:href="@{/css/bootstrap-datetimepicker.css}">
+
+    <script src="bootstrap/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script src="bootstrap/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+
+    <script src="bootstrap/js/bootstrapValidator.min.js" th:src="@{/js/bootstrapValidator.min.js}"></script>
+    <script src="bootstrap/js/bootstrap-datetimepicker.js" th:src="@{/js/bootstrap-datetimepicker.js}"></script>
+    <script src="bootstrap/js/bootstrap-datetimepicker.zh-TW.js" th:src="@{/js/bootstrap-datetimepicker.zh-TW.js}"></script>
+
+    <title>用户管理</title>
+    <style>
+        .bgColor{
+            background-color:rgba(243,66,111,0.15)
+        }
+        .divBorder{
+            border: solid 1px rgba(12,24,255,0.15);
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+        .divBorder2{
+            border: solid 1px rgba(12,24,255,0.15);
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-top: 3px;
+            border-radius: 5px;
+        }
+        .h4font{
+            margin-top: 0px;
+            font-family: 微软雅黑;
+            font-weight: 600;
+        }
+        .left20{
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="divBorder">
+        <form class="form-inline">
+            <div class="form-group">
+                <label class="left20">用户名</label>
+                <input type="text" class="form-control" name="userName" placeholder="用户名" th:value="${}">
+
+                <label class="left20">姓名</label>
+                <input type="text" class="form-control" name="name" placeholder="姓名" th:value="${}">
+
+                <input type="submit" style="margin-left: 20px" class="btn btn-default btn-primary" value="查 询" >
+
+
+            </div>
+        </form>
+    </div>
+
+    <div class="divBorder2">
+        <div class="form-inline">
+            <div class="input-group">
+                <a href="#" class=" btn-toolbar btn    left20" role="button">
+                    <span class=" glyphicon glyphicon-plus" style="margin-right: 5px"></span>添 加</a>
+                <a href="#" class="btn-toolbar btn  left20" role="button">
+                    <span class="glyphicon glyphicon-minus"></span>删除</a>
+            </div>
+        </div>
+        <div>
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>filesNo</th>
+                    <th>customerName</th>
+                    <th>agreementNum</th>
+                    <th>agreementMoney</th>
+                    <th>inRoomNum</th>
+                    <th>编辑</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--等同于 <tr  th:each="customer : ${customerPage.Content()}">-->
+                <tr  th:each="customer : ${customerPage.getContent()}">
+                    <!--等同于<th scope="row" th:text="${customer.getCustomerId()}">1</th>-->
+                    <th scope="row" th:text="${customer.customerId}">1</th>
+                    <td th:text="${customer.filesNo}">neo</td>
+                    <td><a th:href="@{/customer/toEdit/{id}/{pageNo}(id=${customer.customerId},pageNo=${pageIndex})}" th:text="${customer.customerName}">detail</a></td>
+                    <td th:text="${customer.agreementNum}">6</td>
+                    <td th:text="${customer.agreementMoney}">6</td>
+                    <td th:text="${customer.inRoomNum}">6</td>
+                    <td><a th:href="@{/customer/toEdit/{id}/{pageNo}(id=${customer.customerId},pageNo=${pageIndex})}">编辑</a></td>
+                    <td><a th:href="@{/customer/delete/{id}(id=${customer.customerId})}">删除</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

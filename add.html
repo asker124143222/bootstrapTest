@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml"
-      layout:decorator="index"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="~{index}"
 >
+
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 
-    <script src="jquery/jquery-3.3.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="bootstrap/js/bootstrapValidator.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrapValidator.min.css" th:href="@{/css/bootstrapValidator.min.css}">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.css" th:href="@{/css/bootstrap-datetimepicker.css}">
+
+    <script src="bootstrap/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script src="bootstrap/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+
+    <script src="bootstrap/js/bootstrapValidator.min.js" th:src="@{/js/bootstrapValidator.min.js}"></script>
+    <script src="bootstrap/js/bootstrap-datetimepicker.js" th:src="@{/js/bootstrap-datetimepicker.js}"></script>
+    <script src="bootstrap/js/bootstrap-datetimepicker.zh-TW.js" th:src="@{/js/bootstrap-datetimepicker.zh-TW.js}"></script>
+
     <title>新增</title>
     <style>
         .bgColor{
@@ -33,21 +41,37 @@
             font-weight: 600;
         }
     </style>
-</head>
-<body class="">
-<br/>
 
-<!--<div layout:fragment="content">-->
+
+</head>
+<body >
+
 <div class="container" layout:fragment="content">
     <form class="form-horizontal" id="formAdd" action="#" th:action="@{/customer/add}" method="post">
-
+        <input type="hidden" name="customerId" th:value="${customer.customerId}"/>
         <div class="divBorder">
-            <h4 class="panel panel-heading h4font">
-                <a class="btn btn-primary" data-toggle="collapse"
-                   data-target="#customerPanel">客户信息
-                </a>
-                <span th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')}"></span>
-            </h4>
+
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <h4 class="panel panel-heading h4font">
+                        <a class="btn btn-primary" data-toggle="collapse"
+                           data-target="#customerPanel">客户信息
+                        </a>
+                    </h4>
+                </div>
+                <div class="col-sm-1">
+                    <h4 class="panel panel-heading h4font">
+                        <button type="submit" class="btn btn-primary">保 存</button>
+                    </h4>
+                </div>
+                <div class="col-sm-1">
+                    <h4 class="panel panel-heading h4font">
+                        <a href="/customer/list" th:href="@{/customer/list/{pageNo}/{msg}(pageNo=${pageIndex},msg=${msg})}" class="btn btn-primary">返 回</a>
+                    </h4>
+                </div>
+            </div>
+
+
 
             <div class="panel-body collapse in" id="customerPanel">
                 <div class="form-group">
@@ -110,12 +134,14 @@
                 <div class="form-group">
                     <label class="col-sm-1 control-label">入室时间</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="inDate" placeholder="入室时间" th:value="${#temporals.format(#temporals.createNow(),'yyyy-MM-dd HH:mm')}">
+                        <input type="text" class="form-control date form_datetime" name="inDate"
+                               placeholder="入室时间" th:value="${#temporals.format(customer.inDate,'yyyy-MM-dd HH:mm')}">
                     </div>
 
                     <label class="col-sm-1 control-label">离室时间</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="outDate" placeholder="离室时间" th:value="${#temporals.format(customer.outDate,'yyyy-MM-dd HH:mm')}">
+                        <input type="text" class="form-control date form_datetime" name="outDate"
+                               placeholder="离室时间" th:value="${#temporals.format(customer.outDate,'yyyy-MM-dd HH:mm')}">
                     </div>
                 </div>
 
@@ -146,7 +172,8 @@
                 <div class="form-group">
                     <label class="col-sm-1 control-label">生日</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="birthday" placeholder="生日" th:value="${#temporals.format(customer.birthday,'yyyy-MM-dd')}">
+                        <input type="text" class="form-control date form_date" name="birthday"
+                               placeholder="生日" th:value="${#temporals.format(customer.birthday,'yyyy-MM-dd')}">
                     </div>
 
                     <label class="col-sm-1 control-label">身份证</label>
@@ -215,71 +242,74 @@
                    data-target="#babyPanel">宝宝信息
                 </a>
             </h4>
-
+            <input type="hidden" name="babyId" th:value="${baby.babyId}"/>
             <div class="panel-body collapse" id="babyPanel">
                 <div class="form-group">
                     <label class="col-sm-1 control-label">宝宝姓名</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="babyName" placeholder="宝宝姓名">
+                        <input type="text" class="form-control" name="babyName" placeholder="宝宝姓名" th:value="${baby.babyName}">
                     </div>
                     <label class="col-sm-1 control-label">乳名</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="babyBornName" placeholder="乳名">
+                        <input type="text" class="form-control" name="babyBornName" placeholder="乳名" th:value="${baby.babyBornName}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-1 control-label">宝宝性别</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="sex" placeholder="宝宝性别">
+                        <input type="text" class="form-control" name="sex" placeholder="宝宝性别" th:value="${baby.sex}">
                     </div>
                     <label class="col-sm-1 control-label">血型</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="babyBloodType" placeholder="血型">
+                        <input type="text" class="form-control" name="babyBloodType" placeholder="血型" th:value="${baby.babyBloodType}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-1 control-label">宝宝生日</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="babyBithday" placeholder="宝宝生日">
+                        <input type="text" class="form-control date form_date" name="babyBirthday"
+                               placeholder="生日" th:value="${#temporals.format(baby.babyBirthday,'yyyy-MM-dd')}">
                     </div>
                     <label class="col-sm-1 control-label">出生时间</label>
+
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="bornTime" placeholder="出生时间">
+                        <input type="text" class="form-control date form_datetime" name="babyBornTime"
+                               placeholder="出生时间" th:value="${#temporals.format(baby.babyBornTime,'yyyy-MM-dd HH:mm')}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-1 control-label">出生体重</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="bornWeight" placeholder="出生体重g">
+                        <input type="text" class="form-control" name="bornWeight" placeholder="出生体重g" th:value="${baby.bornWeight}">
                     </div>
                     <label class="col-sm-1 control-label">出生身高</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="bornHeight" placeholder="出生身高cm">
+                        <input type="text" class="form-control" name="bornHeight" placeholder="出生身高cm" th:value="${baby.bornHeight}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-1 control-label">入室体重</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="inRoomWeight" placeholder="入室体重">
+                        <input type="text" class="form-control" name="inRoomWeight" placeholder="入室体重" th:value="${baby.inRoomWeight}">
                     </div>
                     <label class="col-sm-1 control-label">离室体重</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="outRoomWeight" placeholder="离室体重">
+                        <input type="text" class="form-control" name="outRoomWeight" placeholder="离室体重" th:value="${baby.outRoomWeight}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-1 control-label">饮食情况</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="eatStatus" placeholder="饮食情况">
+                        <input type="text" class="form-control" name="eatStatus" placeholder="饮食情况" th:value="${baby.eatStatus}">
                     </div>
                     <label class="col-sm-1 control-label">入室情况</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="inRoomStatus" placeholder="入室情况">
+                        <input type="text" class="form-control" name="inRoomStatus" placeholder="入室情况" th:value="${baby.inRoomStatus}">
                     </div>
                 </div>
             </div>
@@ -289,53 +319,53 @@
         <div class="divBorder">
             <h4 class="panel panel-heading h4font">
                 <a class="btn btn-primary " data-toggle="collapse"
-                        data-target="#extraPanel">附加信息
+                   data-target="#extraPanel">附加信息
                 </a>
             </h4>
-
+            <input type="hidden" name="familyId" th:value="${family.familyId}"/>
             <div class="panel-body collapse" id="extraPanel">
                 <div class="form-group">
                     <label class="col-sm-1 control-label">家属姓名</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation1" placeholder="家属姓名">
+                        <input type="text" class="form-control" name="relation1" placeholder="家属姓名" th:value="${family.relation1}">
                     </div>
                     <label class="col-sm-1 control-label">家属关系</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation1Be" placeholder="家属关系">
+                        <input type="text" class="form-control" name="relation1Be" placeholder="家属关系" th:value="${family.relation1Be}">
                     </div>
                     <label class="col-sm-1 control-label">联系电话</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation1Phone" placeholder="联系电话">
+                        <input type="text" class="form-control" name="relation1Phone" placeholder="联系电话" th:value="${family.relation1Phone}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-1 control-label">家属姓名</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation2" placeholder="家属姓名">
+                        <input type="text" class="form-control" name="relation2" placeholder="家属姓名" th:value="${family.relation2}">
                     </div>
                     <label class="col-sm-1 control-label">家属关系</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation2Be" placeholder="家属关系">
+                        <input type="text" class="form-control" name="relation2Be" placeholder="家属关系" th:value="${family.relation2Be}">
                     </div>
                     <label class="col-sm-1 control-label">联系电话</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation2Phone" placeholder="联系电话">
+                        <input type="text" class="form-control" name="relation2Phone" placeholder="联系电话" th:value="${family.relation2Phone}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-1 control-label">家属姓名</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation3" placeholder="家属姓名">
+                        <input type="text" class="form-control" name="relation3" placeholder="家属姓名" th:value="${family.relation3}">
                     </div>
                     <label class="col-sm-1 control-label">家属关系</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation3Be" placeholder="家属关系">
+                        <input type="text" class="form-control" name="relation3Be" placeholder="家属关系" th:value="${family.relation3Be}">
                     </div>
                     <label class="col-sm-1 control-label">联系电话</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="relation3Phone" placeholder="联系电话">
+                        <input type="text" class="form-control" name="relation3Phone" placeholder="联系电话" th:value="${family.relation3Phone}">
                     </div>
                 </div>
             </div>
@@ -351,50 +381,49 @@
             </div>
 
             <div class="col-sm-1">
-                <a href="/customer/list" th:href="@{/customer/list}" class="btn btn-primary">返 回</a>
+                <a href="/customer/list" th:href="@{/customer/list/{pageNo}(pageNo=${pageIndex})}" class="btn btn-primary">返 回</a>
             </div>
 
         </div>
 
     </form>
 
-</div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        var orignWidth; //= $("input[type='text']").outerWidth()+'px';
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var orignWidth; //= $("input[type='text']").outerWidth()+'px';
 //        console.log(orignWidth);
-        var orignHeight; // = $("input[type='text']").outerHeight()+'px';
+            var orignHeight; // = $("input[type='text']").outerHeight()+'px';
 //        console.log(orignHeight);
 
 
-        $("input[type='text']").focus(function(){
-            orignWidth = $(this).outerWidth()+'px';
-            orignHeight = $(this).outerHeight()+'px';
-            $(this).animate({"width":orignWidth,"height":"60px"})
-        }).blur(function(){
-            $(this).animate({"width":orignWidth,"height":orignHeight})
-        });
+            $("input[type='text']").focus(function(){
+                orignWidth = $(this).outerWidth()+'px';
+                orignHeight = $(this).outerHeight()+'px';
+                $(this).animate({"width":orignWidth,"height":"60px"})
+            }).blur(function(){
+                $(this).animate({"width":orignWidth,"height":orignHeight})
+            });
 
-        $('#formAdd').bootstrapValidator({
-            message: 'This value is not valid',
-            feedbackIcons: {/*输入框不同状态，显示图片的样式*/
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields:{
-                customerName: {/*键名username和input name值对应*/
-                    message: 'The customer is not valid',
-                    validators: {
-                        notEmpty: {/*非空提示*/
-                            message: '用户名不能为空'
-                        },
-                        stringLength: {/*长度提示*/
-                            min: 6,
-                            max: 30,
-                            message: '用户名长度必须在6到30之间'
-                        }
+            $('#formAdd').bootstrapValidator({
+                message: 'This value is not valid',
+                feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields:{
+                    customerName: {/*键名username和input name值对应*/
+                        message: 'The customer is not valid',
+                        validators: {
+                            notEmpty: {/*非空提示*/
+                                message: '用户名不能为空'
+                            },
+                            stringLength: {/*长度提示*/
+                                min: 6,
+                                max: 30,
+                                message: '用户名长度必须在6到30之间'
+                            }
 //                        ,
 //                        callback: {/*自定义，可以在这里与其他输入项联动校验*/
 //                            message: '只能是wm5920',
@@ -402,26 +431,62 @@
 //                                return value==='wm5920';
 //                            }
 //                        }
-                    }
-                },
-
-                agreementMoney:{
-                   message:'无效的输入',
-                    validators:{
-                       notEmpty:{
-                           message:'金额不能为空'
-                       },
-                        regexp: {
-                            regexp: /^(([1-9]+)|([0-9]+\.[0-9]{1,2}))$/,
-                            message: '必须是金额,例如：2000.12。'
                         }
+                    },
 
+                    agreementMoney:{
+                        message:'无效的输入',
+                        validators:{
+                            notEmpty:{
+                                message:'金额不能为空'
+                            },
+                            regexp: {
+                                regexp: /^(([1-9]+)|([0-9]+\.[0-9]{1,2}))$/,
+                                message: '必须是金额,例如：2000.12。'
+                            }
+
+                        }
                     }
                 }
-            }
+            });
+
+            $('.form_datetime').datetimepicker({
+                format:'yyyy-mm-dd hh:ii',
+                language:  'zh-TW',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0
+//        showMeridian: 1
+            });
+            $('.form_date').datetimepicker({
+                format:'yyyy-mm-dd',
+                language:  'zh-TW',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+            $('.form_time').datetimepicker({
+                format:'hh:ii',
+                language:  'zh-TW',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 1,
+                minView: 0,
+                maxView: 1,
+                forceParse: 0
+            });
         });
-    });
-</script>
+    </script>
+</div>
 
 </body>
 </html>
