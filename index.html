@@ -254,7 +254,7 @@ desired effect
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="img/3.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>Alexander Pierce</p>
@@ -288,8 +288,9 @@ desired effect
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="checkbox.html">Link in level 2</a></li>
-                        <li><a href="userList.html">Link in level 2</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="add.html">我是add</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="checkbox.html">点击是checkbox页面</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="userList.html">我是userList</a></li>
                     </ul>
                 </li>
             </ul>
@@ -314,17 +315,10 @@ desired effect
 
         <!-- Main content -->
         <section class="content container-fluid">
-            <h1>abcdef</h1>
-            <h2>zzxxdd</h2>
-            <div class="panel panel-heading">
-                heading
-                <div class="panel panel-primary">
-                    primary
-                </div>
-                <div class="panel panel-body">
-                    i bodyt
-                </div>
+            <div id="container">
+                我是内容~~~~~
             </div>
+
             <!--------------------------
               | Your Page Content Here |
               -------------------------->
@@ -431,6 +425,15 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="bootstrap/js/adminlte.min.js"></script>
+<script>
+    $(function () {
+        $('.myLeftMenu').click(function (e) {
+            var url = $(this).attr('data');
+            console.log(url);
+            $('#container').load(url);
+        });
+    })
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
