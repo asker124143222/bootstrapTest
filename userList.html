@@ -74,37 +74,45 @@
             </div>
         </div>
         <div>
-            <table class="table table-hover table-striped table-bordered">
+            <table class="table table-hover table-striped table-bordered text-center">
                 <thead>
-                <tr>
-                    <th id="firstCell" class="text-center"><input type="checkbox" name="checkAll" id="checkAll" value=""></th>
-                    <th>filesNo</th>
-                    <th>customerName</th>
-                    <th>agreementNum</th>
-                    <th>agreementMoney</th>
-                    <th>inRoomNum</th>
-                    <!--<th>编辑</th>-->
-                    <!--<th>删除</th>-->
+                <tr class="info">
+                    <th id="firstCell"><input type="checkbox" name="checkAll" id="checkAll" value=""></th>
+                    <th>序号</th>
+                    <th>账号</th>
+                    <th>姓名</th>
+                    <th>电话</th>
+                    <th>邮箱</th>
+                    <th>创建时间</th>
+                    <th>失效时间</th>
+                    <th>状态</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr  th:each="customer : ${customerPage.getContent()}">
-                    <td class="text-center" ><input type="checkbox"  th:value="${customer.customerId}" value="abc"></td>
-                    <td th:text="${customer.filesNo}">neo</td>
-                    <td><a th:href="@{/customer/toEdit/{id}/{pageNo}(id=${customer.customerId},pageNo=${pageIndex})}" th:text="${customer.customerName}">detail</a></td>
-                    <td th:text="${customer.agreementNum}">6</td>
-                    <td th:text="${customer.agreementMoney}">6</td>
-                    <td th:text="${customer.inRoomNum}">6</td>
+                <tr  th:each="user : ${userPage.getContent()}">
+                    <td class="text-center" ><input type="checkbox"  th:value="${user.userId}" value="abc"></td>
+                    <td th:text="${num}">1</td>
+                    <td><a th:href="@{/customer/toEdit/{id}/{pageNo}(id=${customer.customerId},pageNo=${pageIndex})}" th:text="${user.userName}">zhangsan</a></td>
+                    <td th:text="${user.name}">张三</td>
+                    <td th:text="${user.tel}">13988881234</td>
+                    <td th:text="${user.email}">zhangsan@126.com</td>
+                    <td th:text="${user.createTime}">2018-01-01 13:00</td>
+                    <td th:text="${user.expiredDate}">2019-01-01</td>
+                    <td th:text="${user.state}">正常</td>
                 </tr>
 
-                <tr  th:each="customer : ${customerPage.getContent()}">
-                    <td class="text-center" ><input type="checkbox"  th:id="${customer.customerId}" value=""></td>
-                    <td th:text="${customer.filesNo}">neo</td>
-                    <td><a th:href="@{/customer/toEdit/{id}/{pageNo}(id=${customer.customerId},pageNo=${pageIndex})}" th:text="${customer.customerName}">detail</a></td>
-                    <td th:text="${customer.agreementNum}">6</td>
-                    <td th:text="${customer.agreementMoney}">6</td>
-                    <td th:text="${customer.inRoomNum}">6</td>
+                <tr  th:each="user : ${userPage.getContent()}">
+                    <td class="text-center" ><input type="checkbox"  th:value="${user.userId}" value="abc"></td>
+                    <td th:text="${num}">1</td>
+                    <td><a th:href="@{/customer/toEdit/{id}/{pageNo}(id=${customer.customerId},pageNo=${pageIndex})}" th:text="${user.userName}">zhangsan</a></td>
+                    <td th:text="${user.name}">张三</td>
+                    <td th:text="${user.tel}">13988881234</td>
+                    <td th:text="${user.email}">zhangsan@126.com</td>
+                    <td th:text="${user.createTime}">2018-01-01 13:00</td>
+                    <td th:text="${user.expiredDate}">2019-01-01</td>
+                    <td th:text="${user.state}">正常</td>
                 </tr>
+
                 </tbody>
             </table>
         </div>
@@ -120,9 +128,10 @@
 <script src="bootstrap/js/bootstrap-datetimepicker.zh-TW.js" th:src="@{/js/bootstrap-datetimepicker.zh-TW.js}"></script>
 <script>
     $(function () {
-        var $thr = $('table thead tr');
+        var $thr = $('table thead tr th');
         var $tbr = $('table tbody tr');
 
+        $thr.addClass('text-center');
         var $checkAll = $thr.find('input');
         $checkAll.click(function (event) {
             $tbr.find('input').prop('checked',$(this).prop('checked'));

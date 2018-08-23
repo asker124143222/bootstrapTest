@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>index</title>
+    <title>客户关系管理系统</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -273,39 +273,35 @@ desired effect
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">HEADER</li>
+                <li class="header"><span class="fa-lg">系统菜单</span></li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+                    <a href="#"><i class="fa fa-link"></i> <span>客户管理</span>
                         <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="add.html">我是add</a></li>
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="checkbox.html">点击是checkbox页面</a></li>
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="userList.html">我是userList</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="add.html">产妇管理</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="checkbox.html">婴儿管理</a></li>
                     </ul>
                 </li>
 
-                <li class="header text-center panel panel-primary"><span class="fa-lg ">我就是系统标题</span></li>
-                <!-- Optionally, you can add icons to the links -->
-                <li class=""><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+                    <a href="#"><i class="fa fa-link"></i> <span>系统管理</span>
                         <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="add.html">我是add</a></li>
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="checkbox.html">点击是checkbox页面</a></li>
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="userList.html">我是userList</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="userList.html">用户管理</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="checkbox.html">角色管理</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="userList.html">权限管理</a></li>
                     </ul>
                 </li>
+
+                <li class=""><a href="#"><i class="fa fa-link"></i> <span>关于系统</span></a></li>
+                <li><a href="#"><i class="fa fa-link"></i> <span>关于我们</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -453,7 +449,7 @@ desired effect
         $('.myLeftMenu').click(function (e) {
 
             var url = $(this).attr('data');
-          //  console.log(url);
+            //  console.log(url);
             $('#container').load(url);
         });
     })
