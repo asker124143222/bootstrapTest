@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">
 
     <link rel="stylesheet" href="bootstrap/css/bootstrapValidator.min.css" th:href="@{/css/bootstrapValidator.min.css}">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.css" th:href="@{/css/bootstrap-datetimepicker.css}">
 
 
 
@@ -51,11 +50,11 @@
     <div class="divBorder">
         <form class="form-inline">
             <div class="form-group">
-                <label class="left20">用户名</label>
-                <input type="text" class="form-control" name="userName" placeholder="用户名" th:value="${}">
+                <label class="left20">权限名称</label>
+                <input type="text" class="form-control" name="permissionName" placeholder="菜单或者权限的名称" th:value="${}">
 
-                <label class="left20">姓名</label>
-                <input type="text" class="form-control" name="name" placeholder="姓名" th:value="${}">
+                <label class="left20">路径</label>
+                <input type="text" class="form-control" name="url" placeholder="菜单路径或者权限路径" th:value="${}">
 
                 <input type="submit" style="margin-left: 20px" class="btn btn-default btn-primary" value="查 询" >
 
@@ -83,12 +82,11 @@
                 <tr class="info">
                     <th id="firstCell"><input type="checkbox" name="checkAll" id="checkAll" value=""></th>
                     <th>序号</th>
-                    <th>账号</th>
-                    <th>姓名</th>
-                    <th>电话</th>
-                    <th>邮箱</th>
-                    <th>创建时间</th>
-                    <th>失效时间</th>
+                    <th>权限名称</th>
+                    <th>路径</th>
+                    <th>级别</th>
+                    <th>资源类型</th>
+                    <th>父级菜单</th>
                     <th>状态</th>
                 </tr>
                 </thead>
@@ -101,7 +99,6 @@
                     <td th:text="${user.tel}">13988881234</td>
                     <td th:text="${user.email}">zhangsan@126.com</td>
                     <td th:text="${user.createTime}">2018-01-01 13:00</td>
-                    <td th:text="${user.expiredDate}">2019-01-01</td>
                     <td th:text="${user.state}">正常</td>
                 </tr>
 
@@ -113,7 +110,6 @@
                     <td th:text="${user.tel}">13988881234</td>
                     <td th:text="${user.email}">zhangsan@126.com</td>
                     <td th:text="${user.createTime}">2018-01-01 13:00</td>
-                    <td th:text="${user.expiredDate}">2019-01-01</td>
                     <td th:text="${user.state}">正常</td>
                 </tr>
 
