@@ -16,7 +16,7 @@
 
 
 
-    <title>用户管理</title>
+    <title>权限管理</title>
     <style>
         .bgColor{
             background-color:rgba(243,66,111,0.15)
@@ -51,10 +51,10 @@
         <form class="form-inline">
             <div class="form-group">
                 <label class="left20">权限名称</label>
-                <input type="text" class="form-control" name="permissionName" placeholder="菜单或者权限的名称" th:value="${}">
+                <input type="text" class="form-control" name="permissionName" placeholder="权限的名称" th:value="${}">
 
                 <label class="left20">路径</label>
-                <input type="text" class="form-control" name="url" placeholder="菜单路径或者权限路径" th:value="${}">
+                <input type="text" class="form-control" name="url" placeholder="URL" th:value="${}">
 
                 <input type="submit" style="margin-left: 20px" class="btn btn-default btn-primary" value="查 询" >
 
@@ -83,7 +83,7 @@
                     <th id="firstCell"><input type="checkbox" name="checkAll" id="checkAll" value=""></th>
                     <th>序号</th>
                     <th>权限名称</th>
-                    <th>路径</th>
+                    <th>URL</th>
                     <th>级别</th>
                     <th>资源类型</th>
                     <th>父级菜单</th>
