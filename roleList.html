@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">
+
+    <title>角色管理</title>
+    <style>
+        .bgColor{
+            background-color:rgba(243,66,111,0.15)
+        }
+        .divBorder{
+            border: solid 1px rgba(12,24,255,0.15);
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+        .divBorder2{
+            border: solid 1px rgba(12,24,255,0.15);
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-top: 3px;
+            border-radius: 5px;
+        }
+        .h4font{
+            margin-top: 0px;
+            font-family: 微软雅黑;
+            font-weight: 600;
+        }
+        .left20{
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="divBorder">
+        <form class="form-inline">
+            <div class="form-group">
+                <label class="left20">角色名称</label>
+                <input type="text" class="form-control" name="userName" placeholder="角色名称" th:value="${}">
+
+
+                <input type="submit" style="margin-left: 20px" class="btn btn-default btn-primary" value="查 询" >
+
+
+            </div>
+        </form>
+    </div>
+
+    <div class="divBorder2">
+        <div class="form-inline">
+            <div class="input-group">
+                <a href="#" class="btn   left20" role="button">
+                    <span class=" glyphicon glyphicon-plus" aria-hidden="true" style="margin-right: 5px"></span>添 加</a>
+                <a href="#" class="btn   left20" role="button">
+                    <span class=" glyphicon glyphicon-edit" aria-hidden="true" style="margin-right: 5px"></span>修 改</a>
+                <a href="#" class="btn   left20" role="button">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true" style="margin-right: 5px"></span>删 除</a>
+                <a href="#" class="btn   left20" role="button">
+                    <span class=" glyphicon glyphicon-new-window" aria-hidden="true" style="margin-right: 5px"></span>详 情</a>
+            </div>
+        </div>
+        <div>
+            <table class="table table-hover table-striped table-bordered text-center">
+                <thead>
+                <tr class="info">
+                    <th id="firstCell"><input type="checkbox" name="checkAll" id="checkAll" value=""></th>
+                    <th>序号</th>
+                    <th>角色名称</th>
+                    <th>角色描述</th>
+                    <th>权限</th>
+                    <th>创建时间</th>
+                    <th>失效时间</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  th:each="sysRole : ${sysRolePage.getContent()}">
+                    <td class="text-center" ><input type="checkbox"  th:value="${sysRole.roleId}" value="abc"></td>
+                    <td th:text="${num}">1</td>
+                    <td th:text="${user.userName}">admin</td>
+                    <td th:text="${user.name}">超级管理员</td>
+                    <td><a href="#" th:href="@{/customer/toEdit/{id}/{pageNo}(id=${customer.customerId},pageNo=${pageIndex})}" th:text="${user.tel}">详情</a></td>
+                    <td th:text="${user.createTime}">2018-01-01 13:00</td>
+                    <td th:text="${user.expiredDate}">2019-01-01</td>
+                    <td th:text="${user.state}">正常</td>
+                </tr>
+
+                <tr  th:each="sysRole : ${sysRolePage.getContent()}">
+                    <td class="text-center" ><input type="checkbox"  th:value="${sysRole.roleId}" value="abc"></td>
+                    <td th:text="${num}">1</td>
+                    <td th:text="${user.userName}">admin</td>
+                    <td th:text="${user.name}">超级管理员</td>
+                    <td><a href="#" th:href="@{/customer/toEdit/{id}/{pageNo}(id=${customer.customerId},pageNo=${pageIndex})}" th:text="${user.tel}">详情</a></td>
+                    <td th:text="${user.createTime}">2018-01-01 13:00</td>
+                    <td th:text="${user.expiredDate}">2019-01-01</td>
+                    <td th:text="${user.state}">正常</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="bootstrap/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script src="bootstrap/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+
+<script>
+    $(function () {
+        var $thr = $('table thead tr th');
+        var $tbr = $('table tbody tr');
+
+        $thr.addClass('text-center');
+        var $checkAll = $thr.find('input');
+        $checkAll.click(function (event) {
+            $tbr.find('input').prop('checked',$(this).prop('checked'));
+
+            /*并调整所有选中行的CSS样式*/
+            if ($(this).prop('checked')) {
+                $tbr.find('input').parent().parent().addClass('warning');
+            } else{
+                $tbr.find('input').parent().parent().removeClass('warning');
+            }
+
+            /*阻止向上冒泡，以防再次触发点击操作*/
+            event.stopPropagation();
+        });
+
+        $('#firstCell').click(function () {
+            $(this).find('input').click();
+        })
+
+        $tbr.find('input').click(function(event){
+            /*调整选中行的CSS样式*/
+            $(this).parent().parent().toggleClass('warning');
+            /*如果已经被选中行的行数等于表格的数据行数，将全选框设为选中状态，否则设为未选中状态*/
+            $checkAll.prop('checked',$tbr.find('input:checked').length == $tbr.length ? true : false);
+            /*阻止向上冒泡，以防再次触发点击操作*/
+            event.stopPropagation();
+        });
+        /*点击每一行时也触发该行的选中操作*/
+        $tbr.click(function(){
+            $(this).find('input').click();
+        });
+
+    })
+</script>
+</body>
+</html>
