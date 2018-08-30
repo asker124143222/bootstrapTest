@@ -46,36 +46,14 @@
     </style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
+
     <div class="divBorder">
-        <form class="form-inline">
-            <div class="form-group">
-                <label class="left20">权限名称</label>
-                <input type="text" class="form-control" name="permissionName" placeholder="权限的名称" th:value="${}">
 
-                <label class="left20">路径</label>
-                <input type="text" class="form-control" name="url" placeholder="URL" th:value="${}">
-
-                <input type="submit" style="margin-left: 20px" class="btn btn-default btn-primary" value="查 询" >
-
-
-            </div>
-        </form>
-    </div>
-
-    <div class="divBorder2">
-        <div class="form-inline">
-            <div class="input-group">
-                <a href="#" class="btn   left20" role="button">
-                    <span class=" glyphicon glyphicon-plus" aria-hidden="true" style="margin-right: 5px"></span>添 加</a>
-                <a href="#" class="btn   left20" role="button">
-                    <span class=" glyphicon glyphicon-edit" aria-hidden="true" style="margin-right: 5px"></span>修 改</a>
-                <a href="#" class="btn   left20" role="button">
-                    <span class="glyphicon glyphicon-minus" aria-hidden="true" style="margin-right: 5px"></span>删 除</a>
-                <a href="#" class="btn   left20" role="button">
-                    <span class=" glyphicon glyphicon-new-window" aria-hidden="true" style="margin-right: 5px"></span>详 情</a>
-            </div>
-        </div>
+        <h4 class="panel panel-heading h4font">
+            角色：<span th:text="${sysRole.role}">角色名称</span>
+            <small th:text="${sysRole.description}">角色描述</small>
+        </h4>
         <div>
             <table class="table table-hover table-striped table-bordered text-center">
                 <thead>

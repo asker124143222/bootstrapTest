@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+    <link href="../css/bootstrap-table.css" rel="stylesheet">
+    <link href="../css/jquery.treegrid.css" rel="stylesheet">
+
+
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="../js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-table-zh-CN.js"></script>
+    <script type="text/javascript" src="../js/bootstrap-table-treegrid.js"></script>
+    <script type="text/javascript" src="../js/jquery.treegrid.min.js"></script>
+
+    <script>
+        $(function () {
+            var $table = $("#table");
+            $table.bootstrapTable({
+                url:'../url/treegrid.json',
+                striped:true,
+
+                sidePagenation:'server',
+                idField:'id',
+                columns:[
+                    {
+                        field: 'status',
+                        checkbox: true
+                    },{
+                        field:'name',
+                        title:'名称'
+                    },{
+                        field:'permissionValue',
+                        title:'权限'
+                    }
+                ],
+                treeShowField: 'name',
+                parentIdField: 'pid',
+                onLoadSuccess: function(data) {
+                    $table.treegrid({
+                        initialState: 'collapsed',//收缩
+                        treeColumn: 1,//指明第几列数据改为树形
+                        expanderExpandedClass: 'glyphicon glyphicon-triangle-bottom',
+                        expanderCollapsedClass: 'glyphicon glyphicon-triangle-right',
+                        onChange: function() {
+                            $table.bootstrapTable('resetWidth');
+                        }
+                    });
+                }
+            });
+        })
+    </script>
+
+
+
+</head>
+<body>
+<table id="table"></table>
+</body>
+</html>
