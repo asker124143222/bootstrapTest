@@ -23,7 +23,7 @@
     {
       "id": 21,
       "pid": 1,
-      "status": 1,
+      "status": 0,
       "name": "编辑系统",
       "permissionValue": "open:system:edit"
     },
