@@ -63,7 +63,7 @@
             <div class="input-group">
                 <a href="#" class="btn   left20" role="button">
                     <span class=" glyphicon glyphicon-plus" aria-hidden="true" style="margin-right: 5px"></span>添 加</a>
-                <a href="#" class="btn   left20" role="button">
+                <a id="btnEdit" href="#" class="btn   left20" role="button">
                     <span class=" glyphicon glyphicon-edit" aria-hidden="true" style="margin-right: 5px"></span>修 改</a>
                 <a href="#" class="btn   left20" role="button">
                     <span class="glyphicon glyphicon-minus" aria-hidden="true" style="margin-right: 5px"></span>删 除</a>
@@ -87,7 +87,7 @@
                 </thead>
                 <tbody>
                 <tr  th:each="sysRole : ${sysRolePage.getContent()}">
-                    <td class="text-center" ><input type="checkbox"  th:value="${sysRole.roleId}" value="abc"></td>
+                    <td class="text-center" ><input type="checkbox" name="myCheckBox" th:value="${sysRole.roleId}" value="1"></td>
                     <td th:text="${num}">1</td>
                     <td th:text="${user.userName}">admin</td>
                     <td th:text="${user.name}">超级管理员</td>
@@ -98,7 +98,7 @@
                 </tr>
 
                 <tr  th:each="sysRole : ${sysRolePage.getContent()}">
-                    <td class="text-center" ><input type="checkbox"  th:value="${sysRole.roleId}" value="abc"></td>
+                    <td class="text-center" ><input type="checkbox" name="myCheckBox" th:value="${sysRole.roleId}" value="2"></td>
                     <td th:text="${num}">1</td>
                     <td th:text="${user.userName}">admin</td>
                     <td th:text="${user.name}">超级管理员</td>
@@ -154,6 +154,14 @@
             $(this).find('input').click();
         });
 
+        $('#btnEdit').click(function (e) {
+
+            var roleId = $("input:checkbox[name='myCheckBox']:checked").map(function(index,elem) {
+                return $(elem).val();
+            }).get().join(',');
+
+            console.log(roleId);
+        });
     })
 </script>
 </body>

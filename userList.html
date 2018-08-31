@@ -8,12 +8,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">
-
-    <link rel="stylesheet" href="bootstrap/css/bootstrapValidator.min.css" th:href="@{/css/bootstrapValidator.min.css}">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.css" th:href="@{/css/bootstrap-datetimepicker.css}">
+    <link rel="stylesheet" href="css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">
 
 
+    <script src="js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script src="js/bootstrap.js" th:src="@{/js/bootstrap.min.js}"></script>
+
+
+    <script src="js/bootstrapValidator.min.js" th:src="@{/js/bootstrapValidator.min.js}"></script>
 
     <title>用户管理</title>
     <style>
@@ -121,13 +123,7 @@
     </div>
 </div>
 
-<script src="bootstrap/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-<script src="bootstrap/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 
-
-<script src="bootstrap/js/bootstrapValidator.min.js" th:src="@{/js/bootstrapValidator.min.js}"></script>
-<script src="bootstrap/js/bootstrap-datetimepicker.js" th:src="@{/js/bootstrap-datetimepicker.js}"></script>
-<script src="bootstrap/js/bootstrap-datetimepicker.zh-TW.js" th:src="@{/js/bootstrap-datetimepicker.zh-TW.js}"></script>
 <script>
     $(function () {
         var $thr = $('table thead tr th');
