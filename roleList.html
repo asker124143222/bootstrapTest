@@ -9,38 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">
 
+    <link rel="stylesheet" href="css/myCommon.css">
+
     <script src="js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
     <script src="js/bootstrap.js" th:src="@{/js/bootstrap.min.js}"></script>
 
 
     <title>角色管理</title>
-    <style>
-        .bgColor{
-            background-color:rgba(243,66,111,0.15)
-        }
-        .divBorder{
-            border: solid 1px rgba(12,24,255,0.15);
-            padding-top: 15px;
-            padding-bottom: 15px;
-            margin-top: 5px;
-            border-radius: 5px;
-        }
-        .divBorder2{
-            border: solid 1px rgba(12,24,255,0.15);
-            padding-top: 5px;
-            padding-bottom: 5px;
-            margin-top: 3px;
-            border-radius: 5px;
-        }
-        .h4font{
-            margin-top: 0px;
-            font-family: 微软雅黑;
-            font-weight: 600;
-        }
-        .left20{
-            margin-left: 15px;
-        }
-    </style>
+
+
 </head>
 <body>
 <div class="container-fluid">
@@ -72,7 +49,7 @@
             </div>
         </div>
         <div>
-            <table class="table table-hover table-striped table-bordered text-center">
+            <table id="roleTable" class="table table-hover table-striped table-bordered text-center">
                 <thead>
                 <tr class="info">
                     <th id="firstCell"><input type="checkbox" name="checkAll" id="checkAll" value=""></th>
@@ -152,15 +129,6 @@
         /*点击每一行时也触发该行的选中操作*/
         $tbr.click(function(){
             $(this).find('input').click();
-        });
-
-        $('#btnEdit').click(function (e) {
-
-            var roleId = $("input:checkbox[name='myCheckBox']:checked").map(function(index,elem) {
-                return $(elem).val();
-            }).get().join(',');
-
-            console.log(roleId);
         });
     })
 </script>
