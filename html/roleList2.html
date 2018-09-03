@@ -36,11 +36,7 @@
                 <div class="form-group">
                     <label class="left20">角色名称</label>
                     <input type="text" class="form-control" name="userName" placeholder="角色名称" th:value="${}">
-
-
                     <input type="submit" style="margin-left: 20px" class="btn btn-default btn-primary" value="查 询">
-
-
                 </div>
             </form>
         </div>
@@ -70,45 +66,72 @@
     $(function () {
         var $table = $("#roleTable");
         $table.bootstrapTable({
-            url: '../url/treegrid.json',
-            striped: true,
-
+            url: '../url/treegrid.json',        //请求后台的URL（*）
+            method: 'GET',                      //请求方式（*）
+            striped: true,                      //是否显示行间隔色
             toolbar: '#toolbar',                //工具按钮用哪个容器
+            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            sidePagenation: 'server',           //分页方式：client客户端分页，server服务端分页（*）
             pagination: true,                   //是否显示分页（*）
-            pageNumber: 1,                       //初始化加载第一页，默认第一页
-            pageSize: 5,                       //每页的记录行数（*）
-            pageList: [5, 10, 25, 50, 100],        //可供选择的每页的行数（*）
+            pageNumber: 1,                      //初始化加载第一页，默认第一页
+            pageSize: 5,                        //每页的记录行数（*）
+            pageList: [5, 10, 25, 50],          //可供选择的每页的行数（*）
             search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            // showColumns: true,                  //是否显示所有的列
+            showColumns: true,                  //是否显示所有的列（选择显示的列）
+            minimumCountColumns: 2,             //最少允许的列数
             showRefresh: true,                  //是否显示刷新按钮
-            // clickToSelect: true,                //是否启用点击选中行
-            // showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
-            sidePagenation: 'server',
-            idField: 'id',
+            clickToSelect: true,                //是否启用点击选中行
+//            showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+            sortable: true,                     //是否启用排序
+            sortOrder: "asc",                   //排序方式
+            cardView: false,                    //是否显示详细视图
+            detailView: false,                  //是否显示父子表
+            idField: 'roleId',
+
             columns: [
                 {
-                    field: 'status',
                     checkbox: true
                 }, {
-                    field: 'name',
-                    title: '名称'
+                    field: 'role',
+                    title: '角色名称',
+                    sortable: true
                 }, {
-                    field: 'permissionValue',
-                    title: '权限'
+                    field: 'description',
+                    title: '角色描述'
                 },{
-                    field:'id',
-                    title:'ID'
+                    field:'createTime',
+                    title:'创建时间',
+                    sortable: true
                 },{
-                    field:'pid',
-                    title:'父ID'
+                    field:'expiredDate',
+                    title:'过期时间',
+                    sortable: true
                 },{
-                    field:'status',
-                    title:'状态'
+                    field:'available',
+                    title:'状态',
+                    sortable: true
                 }
 
             ],
-            treeShowField: 'name',
-            parentIdField: 'pid'
+            queryParams : function (params) {
+                //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
+                var temp = {
+                    pageSize: params.limit,                         //页面大小
+                    page: (params.offset / params.limit) + 1,   //页码
+                    sort: params.sort,      //排序列名
+                    sortOrder: params.order //排位命令（desc，asc）
+                };
+                return temp;
+            },
+            onLoadSuccess: function () {
+                console.log("数据加载成功！");
+            },
+            onLoadError: function () {
+                console.log("数据加载失败！");
+            },
+            onDblClickRow: function (row, $element) {
+
+            }
 
         });
 
