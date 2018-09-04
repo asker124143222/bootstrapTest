@@ -135,6 +135,39 @@
 
         });
 
+        $('#btn_edit').click(function () {
+            var selectedLine = $table.bootstrapTable('getSelections');
+            if(selectedLine.length<1)
+            {
+                alert("请选中一行数据");
+            }
+            else
+            {
+                var idList=selectedLine[0].id;
+                for(var i=1;i<selectedLine.length;i++)
+                {
+                    idList+=','+selectedLine[i].id;
+                }
+                console.log(idList);
+
+//                var datalist=JSON.stringify( selectedLine );
+                var url="/login/datalist";
+                $.ajax({
+                    dataType: "text",
+                    traditional:true,//这使json格式的字符不会被转码
+                    data: {"datalist":idList},
+                    type: "post",
+                    url: url,
+                    success : function (data) {
+                        alert("成功！");
+                    },
+                    error : function (data){
+                        alert(data.responseText);
+                    }
+                });
+            }
+        })
+
     })
 </script>
 </body>
