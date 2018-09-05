@@ -20,6 +20,22 @@
           apply the skin class to the body tag so the changes take effect. -->
     <link rel="stylesheet" href="css/skins/skin-blue.min.css">
 
+    <link href="css/bootstrap-table.css" rel="stylesheet">
+    <link href="css/jquery.treegrid.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/myCommon.css">
+
+    <!-- jQuery 3 -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="js/bootstrap.js"></script>
+    <!-- AdminLTE App -->
+    <script src="js/adminlte.js"></script>
+
+    <script type="text/javascript" src="js/bootstrap-table.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table-zh-CN.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table-treegrid.js"></script>
+    <script type="text/javascript" src="js/jquery.treegrid.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -295,7 +311,7 @@ desired effect
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="javascript:void(0)" class="myLeftMenu" data="userList.html">用户管理</a></li>
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="roleList.html">角色管理</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="html/roleList2.html">角色管理</a></li>
                     </ul>
                 </li>
 
@@ -306,7 +322,7 @@ desired effect
                          </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="userList.html">关于系统</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data="html/mytable.html">关于系统</a></li>
                         <li><a href="javascript:void(0)" class="myLeftMenu" data="checkbox.html">关于我们</a></li>
                     </ul>
                 </li>
@@ -335,7 +351,7 @@ desired effect
         <!-- Main content -->
         <section class="content container-fluid">
             <div id="container">
-                我是内容~~~~~
+
             </div>
 
             <!--------------------------
@@ -442,12 +458,7 @@ desired effect
 
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 3 -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="js/bootstrap.js"></script>
-<!-- AdminLTE App -->
-<script src="js/adminlte.js"></script>
+
 <script>
     $(function () {
         $('ul.sidebar-menu li').click(function () {
@@ -459,7 +470,7 @@ desired effect
         $('.myLeftMenu').click(function (e) {
 
             var url = $(this).attr('data');
-            //  console.log(url);
+             console.log(url);
             $('#container').load(url);
         });
     })

@@ -7,20 +7,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">
+    <!--<link rel="stylesheet" href="../css/bootstrap.css" th:href="@{/css/bootstrap.min.css}">-->
 
-    <link href="../css/bootstrap-table.css" rel="stylesheet">
-    <link href="../css/jquery.treegrid.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/myCommon.css">
+    <!--<link href="../css/bootstrap-table.css" rel="stylesheet">-->
+    <!--<link href="../css/jquery.treegrid.css" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="../css/myCommon.css">-->
 
 
-    <script src="../js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-    <script src="../js/bootstrap.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <!--<script src="../js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>-->
+    <!--<script src="../js/bootstrap.js" th:src="@{/js/bootstrap.min.js}"></script>-->
 
-    <script type="text/javascript" src="../js/bootstrap-table.js"></script>
-    <script type="text/javascript" src="../js/bootstrap-table-zh-CN.js"></script>
-    <script type="text/javascript" src="../js/bootstrap-table-treegrid.js"></script>
-    <script type="text/javascript" src="../js/jquery.treegrid.min.js"></script>
+    <!--<script type="text/javascript" src="../js/bootstrap-table.js"></script>-->
+    <!--<script type="text/javascript" src="../js/bootstrap-table-zh-CN.js"></script>-->
+    <!--<script type="text/javascript" src="../js/bootstrap-table-treegrid.js"></script>-->
+    <!--<script type="text/javascript" src="../js/jquery.treegrid.min.js"></script>-->
 
 
     <title>角色管理</title>
@@ -28,9 +28,10 @@
 
 </head>
 <body>
+
 <div class="panel-body" style="padding-bottom:0px;">
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin-bottom: 2px">
         <div class="panel-body">
             <form class="form-inline">
                 <div class="form-group">
@@ -66,7 +67,7 @@
     $(function () {
         var $table = $("#roleTable");
         $table.bootstrapTable({
-            url: '../url/treegrid.json',        //请求后台的URL（*）
+            url: 'url/treegrid.json',        //请求后台的URL（*）
             method: 'GET',                      //请求方式（*）
             striped: true,                      //是否显示行间隔色
             toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -153,7 +154,7 @@
 //                var datalist=JSON.stringify( selectedLine );
                 var url="/login/datalist";
                 $.ajax({
-                    dataType: "text",
+                    dataType: "json",
                     traditional:true,//这使json格式的字符不会被转码
                     data: {"datalist":idList},
                     type: "post",
