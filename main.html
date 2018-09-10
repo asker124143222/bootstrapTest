@@ -491,7 +491,19 @@ desired effect
              console.log(url);
 
             // $('#container').load(url);
-            $("#container").data("tabs").addTab({id:datatext, text: datatext, closeable: true, url: url});
+            var $tabContainer = $('#container');
+            var $tabId = $tabContainer.data('tabs').find(datatext);
+
+            if($tabId.length>0)
+            {
+                console.log("find:"+$tabId);
+                $tabContainer.data('tabs').showTab(datatext);
+            }
+            else {
+                console.log("no find");
+                $("#container").data("tabs").addTab({id:datatext, text: datatext, closeable: true, url: url});
+            }
+
         });
 
     })
