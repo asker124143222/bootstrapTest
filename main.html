@@ -20,9 +20,10 @@
           apply the skin class to the body tag so the changes take effect. -->
     <link rel="stylesheet" href="css/skins/skin-blue.min.css">
 
-    <link href="css/bootstrap-table.css" rel="stylesheet">
-    <link href="css/jquery.treegrid.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+    <link rel="stylesheet" href="css/jquery.treegrid.css">
     <link rel="stylesheet" href="css/myCommon.css">
+    <link rel="stylesheet" href="css/bootstrap-tab.css">
 
     <!-- jQuery 3 -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -31,10 +32,12 @@
     <!-- AdminLTE App -->
     <script src="js/adminlte.js"></script>
 
-    <script type="text/javascript" src="js/bootstrap-table.js"></script>
-    <script type="text/javascript" src="js/bootstrap-table-zh-CN.js"></script>
-    <script type="text/javascript" src="js/bootstrap-table-treegrid.js"></script>
-    <script type="text/javascript" src="js/jquery.treegrid.min.js"></script>
+    <script src="js/bootstrap-table.js"></script>
+    <script src="js/bootstrap-table-zh-CN.js"></script>
+    <script src="js/bootstrap-table-treegrid.js"></script>
+    <script src="js/jquery.treegrid.min.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,8 +47,9 @@
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!--<link rel="stylesheet"-->
+          <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+
 
 
 </head>
@@ -310,8 +314,8 @@ desired effect
                          </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="userList.html">用户管理</a></li>
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="html/roleList2.html">角色管理</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data-id="m1" data="userList.html">用户管理</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu" data-id="m2" data="html/roleList3.html">角色管理</a></li>
                     </ul>
                 </li>
 
@@ -322,7 +326,7 @@ desired effect
                          </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="javascript:void(0)" class="myLeftMenu" data="html/mytable.html">关于系统</a></li>
+                        <li><a href="javascript:void(0)" class="myLeftMenu"  data="html/mytable.html">关于系统</a></li>
                         <li><a href="javascript:void(0)" class="myLeftMenu" data="checkbox.html">关于我们</a></li>
                     </ul>
                 </li>
@@ -337,16 +341,16 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Page Header
-                <small>Optional description</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
-        </section>
+        <!--<section class="content-header">-->
+            <!--&lt;!&ndash;<h1>&ndash;&gt;-->
+                <!--&lt;!&ndash;Page Header&ndash;&gt;-->
+                <!--&lt;!&ndash;<small>Optional description</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;</h1>&ndash;&gt;-->
+            <!--<ol class="breadcrumb">-->
+                <!--<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>-->
+                <!--<li class="active">Here</li>-->
+            <!--</ol>-->
+        <!--</section>-->
 
         <!-- Main content -->
         <section class="content container-fluid">
@@ -460,6 +464,18 @@ desired effect
 
 
 <script>
+
+    $("#container").tabs({
+        data: [
+            {
+            id: 'welcome',
+            text: '欢迎',
+            url: "welcome.html"
+        }],
+        showIndex: 0,
+        loadAll: false
+    })
+
     $(function () {
         $('ul.sidebar-menu li').click(function () {
             var li = $('ul.sidebar-menu li.active');
@@ -470,9 +486,14 @@ desired effect
         $('.myLeftMenu').click(function (e) {
 
             var url = $(this).attr('data');
+            // var dataid=$(this).attr('data-id');
+            var datatext=$(this).text();
              console.log(url);
-            $('#container').load(url);
+
+            // $('#container').load(url);
+            $("#container").data("tabs").addTab({id:datatext, text: datatext, closeable: true, url: url});
         });
+
     })
 </script>
 

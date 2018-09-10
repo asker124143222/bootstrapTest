@@ -29,14 +29,14 @@
 </head>
 <body>
 
-<div class="panel-body" style="padding-bottom:0px;">
+<div class="container-fluid panel-body" style="padding-bottom:0px">
 
-    <div class="panel panel-default" style="margin-bottom: 2px">
+    <div class="panel panel-default" style="margin-bottom: 0px">
         <div class="panel-body">
             <form class="form-inline">
                 <div class="form-group">
-                    <label class="left20">角色名称</label>
-                    <input type="text" class="form-control" name="userName" placeholder="角色名称" th:value="${}">
+                    <label class="">角色名称</label>
+                    <input type="text" class="form-control" name="userName" placeholder="角色名称" th:value="${'名称'}">
                     <input type="submit" style="margin-left: 20px" class="btn btn-default btn-primary" value="查 询">
                 </div>
             </form>
@@ -67,62 +67,85 @@
     $(function () {
         var $table = $("#roleTable");
         $table.bootstrapTable({
-            url: 'url/treegrid.json',        //请求后台的URL（*）
+            url: 'url/treeRole.json',        //请求后台的URL（*）
             method: 'GET',                      //请求方式（*）
             striped: true,                      //是否显示行间隔色
             toolbar: '#toolbar',                //工具按钮用哪个容器
             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
             sidePagination: 'server',           //分页方式：client客户端分页，server服务端分页（*）
+
             pagination: true,                   //是否显示分页（*）
             pageNumber: 1,                      //初始化加载第一页，默认第一页
             pageSize: 5,                        //每页的记录行数（*）
             pageList: [5, 10, 25, 50],          //可供选择的每页的行数（*）
-            search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            // search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             showColumns: true,                  //是否显示所有的列（选择显示的列）
             minimumCountColumns: 2,             //最少允许的列数
             showRefresh: true,                  //是否显示刷新按钮
             clickToSelect: true,                //是否启用点击选中行
 //            showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
             sortable: true,                     //是否启用排序
-            sortOrder: "asc",                   //排序方式
+            sortOrder: "desc",                   //排序方式
+            sortName:'id',
             cardView: false,                    //是否显示详细视图
             detailView: false,                  //是否显示父子表
-            idField: 'roleId',
+            idField: 'id',
 
             columns: [
                 {
-                    checkbox: true
-                }, {
-                    field: 'role',
-                    title: '角色名称',
-                    sortable: true
-                }, {
-                    field: 'description',
-                    title: '角色描述'
+                    filed:'status',
+                    checkbox:true,
+                    formatter:function(value,row,index){
+                        if (row.status == 1)
+                            return {
+                                checked : true//设置选中
+                            };
+                        return value;
+                    }
+
                 },{
-                    field:'createTime',
-                    title:'创建时间',
-                    sortable: true
+                    field:'name',
+                    title:'名称'
                 },{
-                    field:'expiredDate',
-                    title:'过期时间',
-                    sortable: true
+                    field:'permissionValue',
+                    title:'权限'
                 },{
-                    field:'available',
-                    title:'状态',
-                    sortable: true
+                    field:'pid',
+                    title:'父ID'
+                },{
+                    field:'id',
+                    title:'ID',
+                    sortable:true
+                },{
+                    field:'status',
+                    title:'状态'
                 }
 
             ],
+            queryParamsType:'',
             queryParams : function (params) {
                 //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
                 var temp = {
-                    pageSize: params.limit,                         //页面大小
-                    page: (params.offset / params.limit) + 1,   //页码
-                    sort: params.sort,      //排序列名
-                    sortOrder: params.order //排位命令（desc，asc）
+                    pageSize: params.pageSize,                         //页面大小
+                    pageNumber: params.pageNumber,  //页码
+                    sortName: params.sortName,      //排序列名
+                    sortOrder: params.sortOrder //排位命令（desc，asc）
                 };
                 return temp;
+            },
+            rowStyle: function (row, index) {
+                //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+                var strclass = "";
+                if (row.name == "删除环境") {
+                    strclass = 'danger';//还有一个active
+                }
+                else if (row.name == "新增环境") {
+                    strclass = 'success';
+                }
+                else {
+                    return {};
+                }
+                return { classes: strclass }
             },
             onLoadSuccess: function () {
                 console.log("数据加载成功！");
@@ -167,9 +190,16 @@
                     }
                 });
             }
-        })
+        });
+
+        $('#btn_add').click(function () {
+           // $('#container').load('add.html');
+            $("#container").data("tabs").addTab({id:'new_role', text: '新增角色', closeable: true, url: 'add.html'});
+
+        });
 
     })
+
 </script>
 </body>
 </html>

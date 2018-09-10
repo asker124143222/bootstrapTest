@@ -1,7 +1,9 @@
-[
+{
+  "total":14,
+  "rows":[
     {
-      "roleId": 1,
-      "role": "admin",
+      "id": 1,
+      "pid": 0,
       "status": 1,
       "name": "系统管理",
       "permissionValue": "open:system:get"
@@ -61,5 +63,42 @@
       "status": 0,
       "name": "删除环境",
       "permissionValue": "open:env:delete"
+    },
+    {
+      "id": 100,
+      "pid": 33,
+      "status": 0,
+      "name": "删除环境100",
+      "permissionValue": "open:env:delete"
+    },
+    {
+      "id": 101,
+      "pid": 33,
+      "status": 0,
+      "name": "删除环境101",
+      "permissionValue": "open:env:delete"
+    },
+    {
+      "id": 102,
+      "pid": 33,
+      "status": 0,
+      "name": "删除环境102",
+      "permissionValue": "open:env:delete"
+    },
+    {
+      "id": 103,
+      "pid": 33,
+      "status": 0,
+      "name": "删除环境103",
+      "permissionValue": "open:env:delete"
+    },
+    {
+      "id": 104,
+      "pid": 33,
+      "status": 0,
+      "name": "删除环境",
+      "permissionValue": "open:env:delete"
     }
-]
+
+  ]
+}
