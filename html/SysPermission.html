@@ -13,7 +13,6 @@
     <link href="../css/jquery.treegrid.css" rel="stylesheet">
 
 
-
     <script src="../js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
     <script src="../js/bootstrap.js" th:src="@{/js/bootstrap.min.js}"></script>
 
@@ -23,104 +22,106 @@
     <script type="text/javascript" src="../js/jquery.treegrid.min.js"></script>
 
 
-
     <title>权限管理</title>
     <style>
-        .bgColor{
-            background-color:rgba(243,66,111,0.15)
+        .bgColor {
+            background-color: rgba(243, 66, 111, 0.15)
         }
-        .divBorder{
-            border: solid 1px rgba(12,24,255,0.15);
+
+        .divBorder {
+            border: solid 1px rgba(12, 24, 255, 0.15);
             padding-top: 15px;
             padding-bottom: 15px;
             margin-top: 5px;
             border-radius: 5px;
         }
-        .divBorder2{
-            border: solid 1px rgba(12,24,255,0.15);
+
+        .divBorder2 {
+            border: solid 1px rgba(12, 24, 255, 0.15);
             padding-top: 5px;
             padding-bottom: 5px;
             margin-top: 3px;
             border-radius: 5px;
         }
-        .h4font{
+
+        .h4font {
             margin-top: 0px;
             font-family: 微软雅黑;
             font-weight: 600;
         }
-        .left20{
+
+        .left20 {
             margin-left: 15px;
         }
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid panel-body" style="padding-bottom:0px">
 
-    <div class="divBorder">
-
-        <h4 class="panel panel-heading h4font">
-            角色：<span th:text="${sysRole.role}">角色名称</span>
-            <small th:text="${sysRole.description}">角色描述</small>
-        </h4>
-        <div class="">
-            <form method="post">
-                <table id="table">
-
-                </table>
-
-                <div class="form-group panel ">
-                    <div class="col-sm-offset-5 col-sm-1">
-                        <button type="submit" class="btn btn-primary">保 存</button>
-                    </div>
-
-                    <div class="col-sm-1">
-                        <a href="#" th:href="@{/customer/list}" class="btn btn-primary">返 回</a>
-                    </div>
-                </div>
-            </form>
-
+    <form class="form-horizontal" method="post">
+        <div class="panel panel-default" style="margin-bottom: 0px">
+            <div class="panel-body h4font">
+                角色：<span th:text="${sysRole.role}">角色名称</span>
+                （<small th:text="${sysRole.description}">角色描述</small>）
+            </div>
         </div>
-    </div>
+
+        <div id="toolbar" class="btn-group">
+            <button id="btn_add" type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-save" aria-hidden="true"></span>保存
+            </button>
+            <button id="btn_backward" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>返回
+            </button>
+        </div>
+
+
+        <table id="sysRolePermissionTable">
+
+        </table>
+    </form>
+
 </div>
+
 
 
 <script>
     $(function () {
-        var $table = $("#table");
+        var $table = $("#sysRolePermissionTable");
         $table.bootstrapTable({
-            url:'../url/treegrid.json',
-            striped:true,
+            url: '../url/treegrid.json',
+            striped: true,
 
-            // toolbar: '#toolbar',                //工具按钮用哪个容器
-            // pagination: true,                   //是否显示分页（*）
-            // search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+             toolbar: '#toolbar',                //工具按钮用哪个容器
+             pagination: true,                   //是否显示分页（*）
+             search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             // showColumns: true,                  //是否显示所有的列
-            // showRefresh: true,                  //是否显示刷新按钮
+             showRefresh: true,                  //是否显示刷新按钮
             // clickToSelect: true,                //是否启用点击选中行
             // showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
-            sidePagenation:'server',
-            idField:'id',
-            columns:[
+            sidePagination: 'client',
+            idField: 'id',
+            columns: [
                 {
                     field: 'status',
                     checkbox: true
-                },{
-                    field:'name',
-                    title:'名称'
-                },{
-                    field:'permissionValue',
-                    title:'权限'
+                }, {
+                    field: 'name',
+                    title: '名称'
+                }, {
+                    field: 'permissionValue',
+                    title: '权限'
                 }
             ],
             treeShowField: 'name',
             parentIdField: 'pid',
-            onLoadSuccess: function(data) {
+            onLoadSuccess: function (data) {
                 $table.treegrid({
                     initialState: 'collapsed',//收缩
                     treeColumn: 1,//指明第几列数据改为树形
                     expanderExpandedClass: 'glyphicon glyphicon-triangle-bottom',
                     expanderCollapsedClass: 'glyphicon glyphicon-triangle-right',
-                    onChange: function() {
+                    onChange: function () {
                         $table.bootstrapTable('resetWidth');
                     }
                 });

@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.css">
 
 
     <title>用户配置</title>
@@ -44,13 +44,12 @@
 <body>
 
 
-<div class="container">
+<div class="container-fluid panel-body" style="padding-bottom:0px">
     <form class="form-horizontal" id="formAdd" action="#" th:action="@{/customer/add}" method="post">
 
-        <div class="divBorder">
-            <h4 class="panel panel-heading h4font">
-                用户配置
-                <small>（＊星号是必填项）</small>
+        <div class="panel panel-default" style="margin-bottom: 0px">
+            <h4 class="panel panel-heading h4font" >
+                用户配置<small>（＊星号是必填项）</small>
             </h4>
 
             <div class="panel-body">
@@ -141,7 +140,8 @@
             </div>
         </div>
 
-        <br>
+        <br/>
+
         <div class="form-group">
             <div class="col-sm-offset-5 col-sm-1">
                 <button type="submit" class="btn btn-primary">保 存</button>
@@ -158,11 +158,11 @@
 </div>
 
 
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/bootstrapValidator.min.js"></script>
-<script src="js/bootstrap-select.js"></script>
-<script src="js/i18n/defaults-zh_CN.js"></script>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrapValidator.min.js"></script>
+<script src="../js/bootstrap-select.js"></script>
+<script src="../js/i18n/defaults-zh_CN.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -170,26 +170,26 @@
         $('#formAdd').bootstrapValidator({
             message: 'This value is not valid',
             feedbackIcons: {
-                /＊输入框不同状态，显示图片的样式＊/
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                customerName: {
-                    /＊键名username和input name值对应＊/
-                    message: 'The customer is not valid',
+        /＊输入框不同状态，显示图片的样式＊/
+        valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+    },
+        fields: {
+            customerName: {
+                /＊键名username和input name值对应＊/
+                message: 'The customer is not valid',
                     validators: {
-                        notEmpty: {
-                            /＊非空提示＊/
-                            message: '用户名不能为空'
-                        },
-                        stringLength: {
-                            /＊长度提示＊/
-                            min: 6,
+                    notEmpty: {
+                        /＊非空提示＊/
+                        message: '用户名不能为空'
+                    },
+                    stringLength: {
+                        /＊长度提示＊/
+                        min: 6,
                             max: 30,
                             message: '用户名长度必须在6到30之间'
-                        }
+                    }
 //                        ,
 //                        callback: {/＊自定义，可以在这里与其他输入项联动校验＊/
 //                            message: '只能是wm5920',
@@ -197,24 +197,24 @@
 //                                return value==='wm5920';
 //                            }
 //                        }
-                    }
-                },
+                }
+            },
 
-                agreementMoney: {
-                    message: '无效的输入',
+            agreementMoney: {
+                message: '无效的输入',
                     validators: {
-                        notEmpty: {
-                            message: '金额不能为空'
-                        },
-                        regexp: {
-                            regexp: /^(([1-9]+)|([0-9]+\.[0-9]{1,2}))$/,
+                    notEmpty: {
+                        message: '金额不能为空'
+                    },
+                    regexp: {
+                        regexp: /^(([1-9]+)|([0-9]+\.[0-9]{1,2}))$/,
                             message: '必须是金额,例如：2000.12。'
-                        }
-
                     }
+
                 }
             }
-        });
+        }
+    });
     });
 </script>
 
