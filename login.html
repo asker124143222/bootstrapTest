@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>用户登录</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
 
     <style>
         .bgColor{
@@ -28,6 +28,20 @@
         .center {
            padding: 25% 0;
         }
+        .verifyInput{
+            vertical-align:middle;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1;
+            /*border:1px solid #999;*/
+            float: left;
+            width:200px;
+            height:30px;
+
+        }
+        .verifyImage{
+            vertical-align:middle;
+        }
 
 
 
@@ -37,21 +51,27 @@
 
 <div class="container">
     <div class="row center">
-        <div class="divBorder col-sm-offset-3 col-sm-6">
+        <div class="divBorder col-sm-offset-4 col-sm-4">
             <h3 class="panel panel-heading h4font">
                 用户登录
             </h3>
             <form class="form-horizontal" action="#" method="post">
-                <div class="input-group input-group-lg">
+                <div class="input-group ">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" id="userName" name="userName" placeholder="请输入用户名称"/>
                 </div>
                 <br>
-                <div class="input-group input-group-lg">
+                <div class="input-group ">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                     <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码"/>
                 </div>
-
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+                    <input type="text"class="verifyInput" id="verifyCode" name="password" placeholder="验证码"/>
+                    <img class="verifyImage"  height="30" alt="验证码"
+                         onclick="this.src='/defaultKaptcha?d='+new Date()*1" src="img/VCodeImg.image.gif">
+                </div>
 
                 <br>
                 <input type="submit" class="btn btn-lg btn-block btn-info" value="登 录">
